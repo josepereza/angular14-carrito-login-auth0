@@ -1,0 +1,46 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <h1 class="example-app-name">Shop Lith</h1>
+    <span class="spacer"></span>
+    <img *ngIf="isAuthenticated" [src]="user.picture" class="rounded-circle" width="50px" alt="">
+    <a class="nav-link" routerLink="" (click)="signOut()" *ngIf="isAuthenticated">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">logout</mat-icon>
+    </a>
+    <button class="boton-cart" (click)="snav.toggle()">
+      <mat-icon [matBadge]="(myCart$ | async)?.length" matBadgeColor="accent" matBadgeOverlap="false">shopping_cart
+      </mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav position="end" [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let product of (myCart$  | async)">
+            <img src="{{product.images[0]}}" width="50px" alt="">&nbsp;
+            <p>{{ product.title }}</p>&nbsp;
+            <p style="color:red;margin-left: 10px;">{{product.price}}</p>&nbsp;<p style="color:red">€</p>
+          </mat-list-item>
+          <div class="container-total">
+            <div *ngIf="isAuthenticated" class="autentifacion">
+              <span class="total">Total</span> <span class="total2">{{store.total*.90}}</span><span class="total">
+                €</span>
+
+            </div>
+            <div *ngIf="!isAuthenticated" class="sinautentificar">
+              <span class="total">Total</span> <span class="total2">{{store.total}}</span><span class="total"> €</span>
+
+            </div>
+          </div>
+          <button class="comprar" mat-raised-button color="primary">To Pay</button>
+        </mat-list>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <app-products></app-products>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
