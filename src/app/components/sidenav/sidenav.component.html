@@ -3,13 +3,14 @@
     <h1 class="example-app-name">Shop Lith</h1>
     <span class="spacer"></span>
     <img *ngIf="isAuthenticated" [src]="user.picture" class="rounded-circle" width="50px" alt="">
-    <a class="nav-link" routerLink="" (click)="signOut()" *ngIf="isAuthenticated">
-      <mat-icon aria-hidden="false" aria-label="Example home icon">logout</mat-icon>
-    </a>
+    
     <button class="boton-cart" (click)="snav.toggle()">
       <mat-icon [matBadge]="(myCart$ | async)?.length" matBadgeColor="accent" matBadgeOverlap="false">shopping_cart
       </mat-icon>
     </button>
+    <a class="nav-link" routerLink="" (click)="signOut()" *ngIf="isAuthenticated">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" style="color:white!important">logout</mat-icon>
+    </a>
   </mat-toolbar>
 
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
@@ -39,6 +40,8 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
+      <mat-card *ngIf="isAuthenticated">Dto 10%</mat-card>
+
       <app-products></app-products>
 
     </mat-sidenav-content>

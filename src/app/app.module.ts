@@ -28,7 +28,7 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     AppRoutingModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AuthModule.forRoot({
       domain: 'dev-20yrwtuy.eu.auth0.com',
       clientId: 'YspheOFtBEuwekCvGibAYd3Fxn5RHP15'
