@@ -9,23 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  isAuthenticated: boolean;
-  user:any={}
-
 
   constructor(@Inject(DOCUMENT) public document: Document,
-  public auth: AuthService,private router:Router) { 
-      this.isAuthenticated = false;
-  }
+  private auth: AuthService,private router:Router) { }
 
   ngOnInit(): void {
-    this.auth.isAuthenticated$.subscribe((success: boolean) => {
-      this.isAuthenticated = success;
-    });
-    this.auth.user$.subscribe((success: any) => {
-      this.user = success;
-      console.log(success)
-    });
   }
   signIn(){
     

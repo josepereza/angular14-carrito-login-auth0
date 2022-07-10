@@ -3,6 +3,7 @@ import {ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular
 import { StoreService } from 'src/app/services/store.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -18,7 +19,7 @@ export class SidenavComponent implements OnInit {
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef,@Inject(DOCUMENT) private document: Document, 
-    media: MediaMatcher,public store:StoreService,private authService: AuthService) {
+    media: MediaMatcher,public store:StoreService,private authService: AuthService,public router:Router) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -43,11 +44,8 @@ export class SidenavComponent implements OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
    
   }
-  login(): void {
+login(): void {
     // Call this to redirect the user to the login page
-    console.log('me cagizo')
-    this.authService.loginWithRedirect({
-      returnTo: this.document.location.href='tiendafree'
-    });
+    this.router.navigate(['/tienda']);}
   }
-}
+
