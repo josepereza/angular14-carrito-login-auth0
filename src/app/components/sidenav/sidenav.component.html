@@ -2,6 +2,9 @@
   <mat-toolbar color="primary" class="example-toolbar">
     <h1 class="example-app-name">Shop Lith</h1>
     <span class="spacer"></span>
+    <a class="nav-link" routerLink="" (click)="login()" *ngIf="!isAuthenticated">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" style="color:white!important">login</mat-icon>
+    </a>
     <img *ngIf="isAuthenticated" [src]="user.picture" class="rounded-circle" width="50px" alt="">
     
     <button class="boton-cart" (click)="snav.toggle()">

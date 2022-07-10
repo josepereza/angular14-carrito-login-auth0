@@ -43,5 +43,11 @@ export class SidenavComponent implements OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
    
   }
-
+  login(): void {
+    // Call this to redirect the user to the login page
+    console.log('me cagizo')
+    this.authService.loginWithRedirect({
+      returnTo: this.document.location.href='tiendafree'
+    });
+  }
 }

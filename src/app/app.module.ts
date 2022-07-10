@@ -31,7 +31,7 @@ import { HomeComponent } from './components/home/home.component';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AuthModule.forRoot({
       domain: 'dev-20yrwtuy.eu.auth0.com',
-      clientId: 'YspheOFtBEuwekCvGibAYd3Fxn5RHP15'
+      clientId: 'moam9uOFpk2dEx81RKnm98sK1EyPs1Zy'
     }),
     BrowserAnimationsModule,
     MatSidenavModule,

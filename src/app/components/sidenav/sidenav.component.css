@@ -9,7 +9,9 @@
     font-family: 'Hina Mincho', serif !important;
 
   }
-  
+  .nav-link{
+    margin-right: 20px;
+  }
   .example-is-mobile .example-toolbar {
     position: fixed;
     /* Make sure the toolbar will stay on top of the content as it scrolls past. */
@@ -67,7 +69,7 @@
   }
   .rounded-circle{
     border-radius: 50%;
-    margin-right: 20px;
+   
   }
   mat-card{
     position: fixed;
